@@ -22,6 +22,6 @@ async function isRevoked(req, payload, done) {
     if (!user) {
         return done(null, true);
     }
-
+    req.userInfo = user
     done();
 };

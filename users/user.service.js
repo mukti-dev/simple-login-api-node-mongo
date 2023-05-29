@@ -23,9 +23,7 @@ async function authenticate({ username, password }, ip) {
         const { hash, ...userWithoutHash } = user.toObject();
         const token = jwt.sign({ sub: user.id , role: user.role}, config.secret);
         const userLogin = new UserLogin({user:user._id, ip})
-        const save = await userLogin.save()
-        console.log(save)
-
+        userLogin.save()
         return {
             ...userWithoutHash,
             token
